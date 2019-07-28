@@ -1,0 +1,29 @@
+---
+
+- name: "Add docker APT key"
+  command: apt-key adv --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+- name: add deb repo
+  file:
+    path: /etc/apt/sources.list.d/docker.list
+    state: touch
+
+- name: add docker repo
+  lineinfile:
+    dest: "/etc/apt/sources.list.d/docker.list"
+    line: "deb https://apt.dockerproject.org/repo ubuntu-xenial main"
+
+- name: apt-get update
+  apt:
+    update_cache: yes
+
+- name: Install docker
+  apt:
+    name: "docker-engine"
+
+
+- name: "Add azureuser to docker group"
+  user:
+    name: azureuser
+    groups: docker
+    append: yes
