@@ -1,1 +1,0 @@
-seafile_host: "{{ groups['kampos'][0] }}"
