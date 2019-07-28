@@ -1,0 +1,9 @@
+*/*.tfstate
+*/*.backup
+*/*.retry
+ansible-key
+ansible-key.pub
+*/inventory
+terraform.tfstate
+terraform.tfstate.backup
+temp
